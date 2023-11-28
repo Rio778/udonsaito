@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   
   end
   
-  resources :sindans
+ 
   root 'udons#top'
 end

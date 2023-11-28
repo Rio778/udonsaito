@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 2023_10_09_111840) do
     t.integer "user_id"
   end
 
-  create_table "lectures", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.integer "overall"
-    t.integer "level"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "udon_id", null: false
     t.integer "user_id", null: false
