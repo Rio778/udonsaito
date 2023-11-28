@@ -1,0 +1,49 @@
+<h1>うどん診断</h1>
+
+
+<%= form_for(@sindan, class: 'form-horizontal', role: 'form') do |f| %>
+  <div class="container-sindan">
+      <div class="row">
+          <div class="col-2">
+              <h3>Question1. 今の気分は…</h3>
+         
+              <h3><%= f.check_box :question, {multiple: true}, "1", nil %>ガッツリ食べたい</h3>
+              <h3><%= f.check_box :question, {multiple: true}, "2", nil %>ガッツリ食べたい感じではない</h3>
+          </div>
+
+          <div class="col-2">
+              <h3>Question2. 今飲みたい出汁は…</h3>
+          
+              <h3><%= f.check_box :question, {multiple: true}, "1", nil %>甘い感じがいい</h3>
+              <h3><%= f.check_box :question, {multiple: true}, "2", nil %>甘くなくてよい</h3>
+          </div>
+
+          <div class="col-2">
+              <h3>Question3. うどんのトッピングは…</h3>
+          
+              <h3><%= f.check_box :question, {multiple: true}, "1", nil %>揚げ物系がいい</h3>
+              <h3><%= f.check_box :question, {multiple: true}, "2", nil %>変わり種が欲しい</h3>
+          </div>
+
+          <div class="col-2">
+              <h3>Question4. サイドメニューは…</h3>
+       
+              <h3><%= f.check_box :question, {multiple: true}, "1", nil %>バラエティーに富んでいてほしい</h3>
+              <h3><%= f.check_box :question, {multiple: true}, "2", nil %>サイドメニューは重視しない</h3>
+          </div>
+
+      </div>
+  </div>
+  <div class="sindanbotan">
+      <%= f.submit "post" %>
+  </div>
+<% end %>
+
+
+<%= form_for @sindan do |f| %>
+
+
+  
+<% end %>
+
+<%= link_to "一覧に戻る", sindans_path %>

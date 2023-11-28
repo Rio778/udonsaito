@@ -1,0 +1,131 @@
+<h1>users#show</h1>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<%= image_tag @user.image_url, size: "250x200" if @user.image? %>
+
+<h2>ユーザーの投稿一覧</h2>
+<% @user.udons.each do |t| %>
+  <div class="udon">
+        <div class="user">
+          <%= image_tag t.user.image_url, :style => "border-radius:50%", size: "40x40" if t.user.image? %>
+        </div>
+       <div class="username">
+           <% if user_signed_in? %>
+               <%= link_to t.user.name, user_path(t.user.id) %>  
+           <% else %>
+               <%= link_to t.user.name, new_user_session_path %>
+           <% end %>
+       </div>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+          
+            <%= t.place %>
+            <%= t.posted_date %>
+           
+            <% if user_signed_in? %>
+
+                  <% if current_user.already_liked?(t) %>
+                          <%= link_to udon_like_path(id: t.id, udon_id: t.id), method: :delete do %>
+                            <i class="fas fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                  <% else %>
+                          <%= link_to udon_likes_path(id: t.id, udon_id: t.id), method: :post do %>
+                              <i class="far fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                   <% end %>
+          <% else %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+    
+      <div>
+          <h2>総合評価：
+              <span class="star-rating">
+              <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+              </span>
+            </h2>
+        </div>
+
+       <div>
+            <h2>うどんレベル：
+                <span class="star-rating">
+                <span class="star-rating-front" style="width: <%= getPercent(t.level) %>%;">★★★★★</span>
+                <span class="star-rating-back">★★★★★</span>
+                </span>
+            </h2>
+      </div>
+      <%= link_to "詳細へ", udon_path(t.id) %>
+            
+      </div>
+
+<% end %>
+
+
+
+
+<h2>ユーザーがいいねした投稿一覧</h2>
+<% @user.liked_udons.each do |t| %>
+  <div class="udon">
+        <div class="user">
+          <%= image_tag t.user.image_url, :style => "border-radius:50%", size: "40x40" if t.user.image? %>
+        </div>
+       <div class="username">
+           <% if user_signed_in? %>
+               <%= link_to t.user.name, user_path(t.user.id) %>  
+           <% else %>
+               <%= link_to t.user.name, new_user_session_path %>
+           <% end %>
+       </div>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+          
+            <%= t.place %>
+            <%= t.posted_date %>
+            <%= link_to "詳細へ", udon_path(t.id) %>
+            <% if user_signed_in? %>
+
+                  <% if current_user.already_liked?(t) %>
+                          <%= link_to udon_like_path(id: t.id, udon_id: t.id), method: :delete do %>
+                            <i class="fas fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                  <% else %>
+                          <%= link_to udon_likes_path(id: t.id, udon_id: t.id), method: :post do %>
+                              <i class="far fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                   <% end %>
+          <% else %>
+              <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+    
+      <div>
+          <h2>総合評価：
+              <span class="star-rating">
+              <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+              </span>
+            </h2>
+        </div>
+
+       <div>
+            <h2>うどんレベル：
+                <span class="star-rating">
+                <span class="star-rating-front" style="width: <%= getPercent(t.level) %>%;">★★★★★</span>
+                <span class="star-rating-back">★★★★★</span>
+                </span>
+            </h2>
+      </div>
+      <%= link_to "詳細へ", udon_path(t.id) %>
+            
+    </div>
+
+      
+
+
+<% end %>
+<!-- ここまで-->
+
+<%= link_to "Udon一覧に戻る", udons_path %>

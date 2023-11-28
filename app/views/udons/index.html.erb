@@ -1,0 +1,91 @@
+<h1>udonsaito</h1>
+
+<div class="inu1">
+<h3>投稿を検索</h3>
+</div>
+
+ <%= form_tag({controller:"udons",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+<div class="inu">
+ <h3>一覧ページ</h3>
+</div>
+<%= link_to '新規投稿へ', new_udon_path %> 
+
+<body>
+ <div class="udons-container">
+  <% @udons.each do |t| %>
+        <div class="udon">
+        <div class="user">
+          <%= image_tag t.user.image_url, :style => "border-radius:50%", size: "40x40" if t.user.image? %>
+        </div>
+       <div class="username">
+           <% if user_signed_in? %>
+               <%= link_to t.user.name, user_path(t.user.id) %>  
+           <% else %>
+               <%= link_to t.user.name, new_user_session_path %>
+           <% end %>
+       </div>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            <%= t.shop %>
+            <%= t.place %>
+            <%= t.posted_date %>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <% if user_signed_in? %>
+
+                  <% if current_user.already_liked?(t) %>
+                          <%= button_to udon_like_path(id: t.id, udon_id: t.id), method: :delete do %>
+                            <i class="fa-sharp fa-solid fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                  <% else %>
+                          <%= button_to udon_likes_path(id: t.id, udon_id: t.id), method: :post do %>
+                            <i class="fa-sharp fa-solid fa-heart"></i><%= t.likes.count %>
+                          <% end %>
+                   <% end %>
+          <% else %>
+          <i class="fa-sharp fa-solid fa-heart"></i><%= t.likes.count %>
+          <% end %>
+    
+
+      <div>
+          <h2>総合評価：
+              <span class="star-rating">
+              <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+              </span>
+            </h2>
+        </div>
+
+        
+       <div>
+            <h2>うどんレベル：
+                <span class="star-rating">
+                <span class="star-rating-front" style="width: <%= getPercent(t.level) %>%;">★★★★★</span>
+                <span class="star-rating-back">★★★★★</span>
+                </span>
+            </h2>
+      </div>
+      <%= link_to "詳細へ", udon_path(t.id) %>
+            
+      </div>
+
+   
+    <div class="neko">
+      <%= link_to "マイページへ", user_path(current_user.id) %>
+    </div>
+
+    <div class="neko1">
+      <%= link_to "新規投稿へ", new_udon_path %>
+    </div> 
+    
+
+    <div class="log">
+    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    </div> 
+
+      <% end %>
+  </div>
+</body>

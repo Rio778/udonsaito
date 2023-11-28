@@ -1,0 +1,48 @@
+<h1>Udon</h1>
+<h3>Udon詳細</h3>
+<div class="udon">
+  
+  <p><%= @udon.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@udon) %>
+        <%= button_to udon_like_path(@udon), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @udon.likes.count %>
+        <% end %>
+      <% else %>
+        <%= button_to udon_likes_path(@udon), method: :post do %>
+          <i class="far fa-heart"></i><%= @udon.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+    <i class="far fa-heart"></i><%= @udon.likes.count %>
+    <% end %>
+  
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @udon.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@udon, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Udon一覧に戻る", udons_path %>

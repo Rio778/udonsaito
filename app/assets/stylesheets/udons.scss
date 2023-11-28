@@ -1,0 +1,215 @@
+// Place all the styles related to the udons controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.lecture_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    margin: 30px;
+  }
+  .name_field{
+    width: 200px;
+    margin-bottom: 30px;
+  }
+
+/*　以下新規投稿ページの星用のCSS　*/
+
+  .post_form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .post_form input[type='radio']{
+    display: none;
+  }
+  .post_form label{
+    position: relative;
+    padding: 10px 10px 0;
+    color: gray;
+    cursor: pointer;
+    font-size: 30px; /*星の大きさを変更するときはここ*/
+  }
+  .post_form label .text{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+    color: gray;
+  }
+  .post_form label:hover,
+  .post_form label:hover ~ label,
+  .post_form input[type='radio']:checked ~ label{
+    color: #ffcc00;
+  }
+
+
+/*　以下一覧ページの星用のCSS　*/
+
+  .star-rating {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  }
+  .star-rating-front {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    display: inline-block;
+    color: #ccc;
+
+  }
+
+
+
+.nav-link{
+    display: inline-block;
+    text-decoration: none;
+    background: #87befd;
+    color: #FFF;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 0px 5px #b27a0c;
+    border: dashed 1px #FFF;
+    transition: .4s;
+  }
+  
+.nav-link{
+    background: #b27a0c;
+    box-shadow: 0px 0px 0px 5px #b27a0c;
+  }
+
+.nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.nav-link{margin: 150px;
+}
+
+#first-block {
+  background-image: url("images/1.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 550px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .mofumofu{
+  display: flex;
+
+ }
+
+ .udons-container{
+text-align: center;
+
+ }
+
+.field1{
+margin-bottom: 50px;
+
+}
+  
+
+
+.abcd{
+  display: flex;
+  flex-direction: row; 
+}
+
+.udonstar_form{
+  margin-right: 200px;
+}
+
+.neko{
+margin: 200px;
+}
+
+.neko{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  width: 200px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #d09d44;
+  border-radius: 50vh;
+}
+
+
+
+.neko1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  width: 200px;
+  color: #dd9821;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #d09d44;
+  border-radius: 50vh;
+}
+
+.inu1{
+  margin: 10px;
+}
+
+
+.inu{
+  text-align: center;
+}
+
+.inu{
+  margin: 30px;
+}
+
+.log{
+  margin-top: 50px;
+}
+
+.aoao{
+  margin: 50px;
+}
+
+.aoao{
+  margin: 0 auto;
+  margin-top: 350px;
+}
+
+.nemui{
+  text-align:center;
+  font-size: 20px;
+}
+
+.netai{
+  text-align:center;
+  font-size: 30px;
+}

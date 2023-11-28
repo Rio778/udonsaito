@@ -1,0 +1,105 @@
+<h1>診断結果</h1>
+
+<div class="sindan">
+  
+  <p><%= @sindan.created_at %></p>
+</div>
+
+
+<div class="intoro">
+
+<p>あなたにおすすめのうどんは…</p>
+</div>
+<div class="sindan-container">
+<div class="sindan">
+    <% if @sindan.question == "1111" %>
+   
+    <p>牧のうどんの</p>
+    <p>肉ごぼう天うどん</p>
+    <img src="images/画像のurl">
+    <% elsif @sindan.question == "1112" %>
+
+    <div class="oo">
+      <p>牧のうどんの</p>
+      <p>肉ごぼう天うどん</p>
+      
+    </div>
+
+    <% elsif @sindan.question == "1121" %>
+   
+    <p>牧のうどんの</p>
+    <p>唐揚げうどん</p>
+
+    <% elsif @sindan.question == "1122" %>
+    
+    <p>牧のうどんの</p>
+    <p>スペシャルうどん</p>
+
+    <% elsif @sindan.question == "1211" %>
+    
+    <p>ウエストの</p>
+    <p>かき揚げうどん</p>
+
+    <% elsif @sindan.question == "1212" %>
+    
+    <p>牧のうどんの</p>
+    <p>唐揚げうどん</p>
+
+    <% elsif @sindan.question == "1221" %>
+    
+    <p>資さんうどんの</p>
+    <p>鍋焼きうどん</p>
+
+    <% elsif @sindan.question == "1222" %>
+   
+    <p>牧のうどんの</p>
+    <p>スペシャルうどん</p>
+
+    <% elsif @sindan.question == "2111" %>
+    
+    <p>資さんうどんの</p>
+    <p>肉ごぼう天うどん</p>
+
+    <% elsif @sindan.question == "2112" %>
+    
+    <p>ウエストの</p>
+    <p>肉ごぼう天うどん</p>
+
+    <% elsif @sindan.question == "2121" %>
+   
+    <p>資さんうどんの</p>
+    <p>肉うどん</p>
+
+    <% elsif @sindan.question == "2122" %>
+    
+    <p>ウエストの</p>
+    <p>肉うどん</p>
+
+    <% elsif @sindan.question == "2211" %>
+    
+    <p>資さんうどんの</p>
+    <p>かき揚げうどん</p>
+
+    <% elsif @sindan.question == "2212" %>
+    
+    <p>ウエストの</p>
+    <p>ごぼう天うどん</p>
+
+    <% elsif @sindan.question == "2221" %>
+    
+    <p>牧のうどんの</p>
+    <p>スペシャルうどん</p>
+
+    <% elsif @sindan.question == "2222" %>
+   
+    <p>牧のうどんの</p>
+    <p>スペシャルうどん</p>
+
+    <% end %>
+
+</div>
+
+
+<div class="ss">
+<%= link_to "Sindan一覧に戻る", sindans_path %>
+</div>
